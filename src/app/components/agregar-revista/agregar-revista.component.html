@@ -1,4 +1,54 @@
 <app-menu></app-menu>
-<div style="padding: 2%">
-    <p>agregar-revista works!</p>
-</div>
+<div class="container">
+                <div class="row">
+                        <mat-toolbar color="primary" >    
+                        <span>Registra Revista</span>    
+                        </mat-toolbar>  
+                </div>
+                <div  class="row"  style="margin-top: 3%">
+                            <mat-form-field class="col-md-4">
+                                <mat-label>Nombre</mat-label>
+                                <input  matInput [(ngModel)] = "objRevista.nombre">
+                            </mat-form-field>
+                            <mat-form-field class="col-md-4">
+                                <mat-label>Frecuencia</mat-label>
+                                <input  matInput [(ngModel)] = "objRevista.frecuencia">
+                            </mat-form-field>
+                            <mat-form-field class="col-md-4">
+                                <mat-label>Fecha de Creación</mat-label>
+                                <input  matInput [matDatepicker]="picker">
+                                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                            </mat-form-field>
+                </div>
+                <div class="row"  style="margin-top: 3%">
+                            <mat-form-field class="col-md-4">
+                                <mat-label>Teléfono</mat-label>
+                                <input  matInput [(ngModel)] = "objRevista.telefono">
+                            </mat-form-field>
+
+                            <mat-form-field class="col-md-4">
+                                <mat-label>País</mat-label>
+                                <mat-select [(ngModel)] = "objRevista.pais!.idPais">
+                                    <mat-option value="-1"> [Seleccione] </mat-option>
+                                    <mat-option *ngFor="let x of lstPais" [value]="x.idPais">
+                                         {{x.nombre}}
+                                    </mat-option>
+                                </mat-select> 
+                            </mat-form-field> 
+                            <mat-form-field class="col-md-4">
+                                <mat-label>Tipo Revista</mat-label>
+                                <mat-select  [(ngModel)] = "objRevista.tipoRevista!.idDataCatalogo">
+                                    <mat-option value="-1"> [Seleccione] </mat-option>
+                                    <mat-option *ngFor="let y of lstTipoRevista" [value]="y.idDataCatalogo">
+                                        {{y.descripcion}}
+                                   </mat-option>
+                                </mat-select> 
+                            </mat-form-field>
+                </div>
+                <div  class="row" >
+                    <button mat-raised-button type="submit" color="primary" (click)="registra()">Registra</button>
+                </div>
+ 
+  </div>
+  
